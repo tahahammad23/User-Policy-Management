@@ -1,0 +1,47 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #E0F7FA, #B2EBF2);
+  padding: 12px 28px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border-bottom: 2px solid #4FC3C7;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 0 0 12px 12px;
+  width: 85%;
+  position: fixed;
+  left: 5.5%;
+  top: 30px;
+
+}
+p {
+  font-family: 'Poppins', 'Segoe UI', sans-serif; /* Clean & modern font */
+  font-size: 22px;           /* Balanced size for readability */
+  font-weight: 600;          /* Slightly lighter than 700 for elegance */
+  color: #051c2c;            /* Deep healthcare teal */
+  margin: 8px 0;             /* Gentle vertical spacing */
+  letter-spacing: 0.3px;     /* Slight spacing for a neat look */
+  line-height: 1.6;          /* Improves readability */
+  transition: color 0.3s ease;
+}
+
+/* Optional hover effect for interactive dashboards */
+p:hover {
+  color: #00A8A8;            /* Brighter teal on hover */
+}
+ ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+ }
+ a{
+  text-decoration: none;
+  color: #1b2e58;
+  font-weight: 500;
+  transition: text-decoration 0.3s ease;
+ }
+  a:hover{
+  text-decoration: underline;
+  }

@@ -1,13 +1,30 @@
-.user-button{
-    background-color: rgb(97, 97, 229); 
-    border: none;
-    color: white;
-    padding: 10px 24px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 12px;
+.user-button {
+  background: linear-gradient(135deg, #4FC3C7, #007B83); /* Soft teal gradient */
+  border: none;
+  color: #ffffff;
+  padding: 12px 28px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 6px 4px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 123, 131, 0.3);
+  transition: all 0.3s ease;
+}
+
+.user-button:hover {
+  background: linear-gradient(135deg, #3BA8AB, #006B72);
+  box-shadow: 0 6px 14px rgba(0, 107, 114, 0.35);
+  transform: translateY(-2px);
+}
+
+.user-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 7px rgba(0, 107, 114, 0.25);
 }

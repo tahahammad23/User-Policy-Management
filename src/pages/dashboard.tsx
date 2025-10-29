@@ -1,4 +1,4 @@
-function Button()
+function Dashboard()
 {
   return (
     <div>
@@ -6,4 +6,4 @@ function Button()
     </div>
     )
   }
-export default Button;
+export default Dashboard;
