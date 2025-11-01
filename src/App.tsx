@@ -1,19 +1,21 @@
-import Button from './components/Buttons'
-import Navbar from './components/Navbar'
-import './App.css';
-function App() {
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Users from "./pages/Users";
+import Policies from "./pages/Policies";
+import Navbar from "./components/Navbar";
+import './styles/main.css';
 
+function App() {
   return (
-    <div className="app-root">
-      <header className="app-navbar">
-        <Navbar />
-      </header>
-      <main className="app-content">
-        <Button text="Users" />
-        <Button text="Policies" />
-      </main>
-    </div>
-  )
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/policies" element={<Policies />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
