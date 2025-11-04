@@ -11,6 +11,8 @@ export default function Users() {
   const [showModal, setShowModal] = useState(false);
   const [editingUser, setEditingUser] = useState<User | null>(null);
   const [formData, setFormData] = useState({ name: "", email: "", role: "" });
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deletingUserId, setDeletingUserId] = useState<number | null>(null);
 
   // Handle add/edit form submission
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -106,7 +108,10 @@ export default function Users() {
                     Edit
                   </button>
                   <button
-                    onClick={() => handleDelete(user.id)}
+                    onClick={() => {
+                      setShowDeleteModal(true);
+                      setDeletingUserId(user.id);
+                    }}
                     className="text-red-600 hover:underline"
                   >
                     Delete
@@ -185,6 +190,40 @@ export default function Users() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {showDeleteModal && (
+        <div className="fixed inset-0 flex justify-center items-center z-50 bg-gray-500/50">
+          <div className="bg-white rounded-xl shadow-lg p-6 w-96">
+            <h2 className="text-xl font-bold mb-4">Confirm Deletion</h2>
+            <p>Are you sure you want to delete this user?</p>
+            <div className="flex justify-end gap-3 mt-4">
+              <button
+                type="button"
+                onClick={() => {
+                  setShowDeleteModal(false);
+                  setDeletingUserId(null);
+                }}
+                className="px-4 py-2 rounded-lg border"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  if (deletingUserId) {
+                    handleDelete(deletingUserId);
+                  }
+                  setShowDeleteModal(false);
+                  setDeletingUserId(null);
+                }}
+                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
+              >
+                Delete
+              </button>
+            </div>
           </div>
         </div>
       )}
