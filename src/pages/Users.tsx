@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import type User from "../types/user";
+import Modal from "../components/Modal";
 
 export default function Users() {
   const [users, setUsers] = useState<User[]>([
@@ -130,103 +131,109 @@ export default function Users() {
         </table>
       </div>
 
-      {/* Modal */}
-      {showModal && (
-        <div className="fixed inset-0 flex justify-center items-center   z-50 bg-gray-500/50 ">
-          <div className="bg-white rounded-xl shadow-lg p-6 w-96">
-            <h2 className="text-xl font-bold mb-4">
-              {editingUser ? "Edit User" : "Add User"}
-            </h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <input
-                type="text"
-                placeholder="Name"
-                required
-                className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
-                value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                required
-                className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
-              />
-              <select
-                required
-                className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
-                value={formData.role}
-                onChange={(e) =>
-                  setFormData({ ...formData, role: e.target.value })
-                }
-              >
-                <option value="">Select Role</option>
-                <option value="Admin">Admin</option>
-                <option value="User">User</option>
-              </select>
-              <div className="flex justify-end gap-3 mt-4">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setShowModal(false);
-                    setEditingUser(null);
-                    setFormData({ name: "", email: "", role: "" });
-                  }}
-                  className="px-4 py-2 rounded-lg border"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-                >
-                  {editingUser ? "Update" : "Add"}
-                </button>
-              </div>
-            </form>
+      {/* Add/Edit Modal */}
+      <Modal
+        show={showModal}
+        onClose={() => {
+          setShowModal(false);
+          setEditingUser(null);
+          setFormData({ name: "", email: "", role: "" });
+        }}
+        title={editingUser ? "Edit User" : "Add User"}
+      >
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="text"
+            placeholder="Name"
+            required
+            className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+            value={formData.name}
+            onChange={(e) =>
+              setFormData({ ...formData, name: e.target.value })
+            }
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            required
+            className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+            value={formData.email}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
+          />
+          <select
+            required
+            className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+            value={formData.role}
+            onChange={(e) =>
+              setFormData({ ...formData, role: e.target.value })
+            }
+          >
+            <option value="">Select Role</option>
+            <option value="Admin">Admin</option>
+            <option value="User">User</option>
+          </select>
+          <div className="flex justify-end gap-3 mt-4">
+            <button
+              type="button"
+              onClick={() => {
+                setShowModal(false);
+                setEditingUser(null);
+                setFormData({ name: "", email: "", role: "" });
+              }}
+              className="px-4 py-2 rounded-lg border"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+            >
+              {editingUser ? "Update" : "Add"}
+            </button>
           </div>
-        </div>
-      )}
+        </form>
+      </Modal>
 
-      {showDeleteModal && (
-        <div className="fixed inset-0 flex justify-center items-center z-50 bg-gray-500/50">
-          <div className="bg-white rounded-xl shadow-lg p-6 w-96">
-            <h2 className="text-xl font-bold mb-4">Confirm Deletion</h2>
-            <p>Are you sure you want to delete this user?</p>
-            <div className="flex justify-end gap-3 mt-4">
-              <button
-                type="button"
-                onClick={() => {
-                  setShowDeleteModal(false);
-                  setDeletingUserId(null);
-                }}
-                className="px-4 py-2 rounded-lg border"
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  if (deletingUserId) {
-                    handleDelete(deletingUserId);
-                  }
-                  setShowDeleteModal(false);
-                  setDeletingUserId(null);
-                }}
-                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
-              >
-                Delete
-              </button>
-            </div>
+      {/* Delete Modal */}
+      <Modal
+        show={showDeleteModal}
+        onClose={() => {
+          setShowDeleteModal(false);
+          setDeletingUserId(null);
+        }}
+        title="Confirm Deletion"
+      >
+        <div>
+          <p>Are you sure you want to delete this user?</p>
+          <div className="flex justify-end gap-3 mt-4">
+            <button
+              type="button"
+              onClick={() => {
+                setShowDeleteModal(false);
+                setDeletingUserId(null);
+              }}
+              className="px-4 py-2 rounded-lg border"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                if (deletingUserId) {
+                  handleDelete(deletingUserId);
+                }
+                setShowDeleteModal(false);
+                setDeletingUserId(null);
+              }}
+              className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
+            >
+              Delete
+            </button>
           </div>
         </div>
-      )}
+      </Modal>
     </main>
   );
 }

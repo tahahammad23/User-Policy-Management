@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import type Policy from "../types/policy";
+import Modal from "../components/Modal";
 
 export default function Policies() {
   const [policies, setPolicies] = useState<Policy[]>([
@@ -170,119 +171,129 @@ export default function Policies() {
         </table>
       </div>
 
-      {/* Modal */}
-      {showModal && (
-        <div className="fixed inset-0 flex justify-center items-center  z-50 bg-gray-500/50 ">
-          <div className="bg-white rounded-xl shadow-lg p-6 w-96">
-            <h2 className="text-xl font-bold mb-4">
-              {editingPolicy ? "Edit Policy" : "Add Policy"}
-            </h2>
+      {/* Add/Edit Modal */}
+      <Modal
+        show={showModal}
+        onClose={() => {
+          setShowModal(false);
+          setEditingPolicy(null);
+          setFormData({
+            userName: "",
+            plan: "",
+            status: "",
+            effectiveDate: "",
+          });
+        }}
+        title={editingPolicy ? "Edit Policy" : "Add Policy"}
+      >
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="text"
+            placeholder="User Name"
+            required
+            className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+            value={formData.userName}
+            onChange={(e) =>
+              setFormData({ ...formData, userName: e.target.value })
+            }
+          />
+          <input
+            type="text"
+            placeholder="Plan Name"
+            required
+            className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+            value={formData.plan}
+            onChange={(e) =>
+              setFormData({ ...formData, plan: e.target.value })
+            }
+          />
+          <select
+            required
+            className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+            value={formData.status}
+            onChange={(e) =>
+              setFormData({ ...formData, status: e.target.value })
+            }
+          >
+            <option value="">Select Status</option>
+            <option value="Active">Active</option>
+            <option value="Expired">Expired</option>
+          </select>
+          <input
+            type="date"
+            required
+            className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+            value={formData.effectiveDate}
+            onChange={(e) =>
+              setFormData({ ...formData, effectiveDate: e.target.value })
+            }
+          />
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <input
-                type="text"
-                placeholder="User Name"
-                required
-                className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
-                value={formData.userName}
-                onChange={(e) =>
-                  setFormData({ ...formData, userName: e.target.value })
-                }
-              />
-              <input
-                type="text"
-                placeholder="Plan Name"
-                required
-                className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
-                value={formData.plan}
-                onChange={(e) =>
-                  setFormData({ ...formData, plan: e.target.value })
-                }
-              />
-              <select
-                required
-                className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
-                value={formData.status}
-                onChange={(e) =>
-                  setFormData({ ...formData, status: e.target.value })
-                }
-              >
-                <option value="">Select Status</option>
-                <option value="Active">Active</option>
-                <option value="Expired">Expired</option>
-              </select>
-              <input
-                type="date"
-                required
-                className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
-                value={formData.effectiveDate}
-                onChange={(e) =>
-                  setFormData({ ...formData, effectiveDate: e.target.value })
-                }
-              />
+          <div className="flex justify-end gap-3 mt-4">
+            <button
+              type="button"
+              onClick={() => {
+                setShowModal(false);
+                setEditingPolicy(null);
+                setFormData({
+                  userName: "",
+                  plan: "",
+                  status: "",
+                  effectiveDate: "",
+                });
+              }}
+              className="px-4 py-2 rounded-lg border"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+            >
+              {editingPolicy ? "Update" : "Add"}
+            </button>
+          </div>
+        </form>
+      </Modal>
 
-              <div className="flex justify-end gap-3 mt-4">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setShowModal(false);
-                    setEditingPolicy(null);
-                    setFormData({
-                      userName: "",
-                      plan: "",
-                      status: "",
-                      effectiveDate: "",
-                    });
-                  }}
-                  className="px-4 py-2 rounded-lg border"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-                >
-                  {editingPolicy ? "Update" : "Add"}
-                </button>
-              </div>
-            </form>
+      {/* Delete Modal */}
+      <Modal
+        show={showDeleteModal}
+        onClose={() => {
+          setShowDeleteModal(false);
+          setDeletingPolicyId(null);
+        }}
+        title="Confirm Deletion"
+      >
+        <div>
+          <p>Are you sure you want to delete this policy?</p>
+          <div className="flex justify-end gap-3 mt-4">
+            <button
+              type="button"
+              onClick={() => {
+                setShowDeleteModal(false);
+                setDeletingPolicyId(null);
+              }}
+              className="px-4 py-2 rounded-lg border"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                if (deletingPolicyId) {
+                  handleDelete(deletingPolicyId);
+                }
+                setShowDeleteModal(false);
+                setDeletingPolicyId(null);
+              }}
+              className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
+            >
+              Delete
+            </button>
           </div>
         </div>
-      )}
-
-      {showDeleteModal && (
-        <div className="fixed inset-0 flex justify-center items-center z-50 bg-gray-500/50">
-          <div className="bg-white rounded-xl shadow-lg p-6 w-96">
-            <h2 className="text-xl font-bold mb-4">Confirm Deletion</h2>
-            <p>Are you sure you want to delete this policy?</p>
-            <div className="flex justify-end gap-3 mt-4">
-              <button
-                type="button"
-                onClick={() => {
-                  setShowDeleteModal(false);
-                  setDeletingPolicyId(null);
-                }}
-                className="px-4 py-2 rounded-lg border"
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  if (deletingPolicyId) {
-                    handleDelete(deletingPolicyId);
-                  }
-                  setShowDeleteModal(false);
-                  setDeletingPolicyId(null);
-                }}
-                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      </Modal>
     </div>
   );
 }
