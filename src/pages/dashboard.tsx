@@ -5,7 +5,7 @@ export default function Dashboard() {
   // You can later replace these static values with real data from API or state
   const summary = [
     { title: "Total Users", value: 120, color: "text-blue-600" },
-    { title: "Total Policies", value: 58, color: "text-green-600" },
+    { title: "Total Policies", value: 158, color: "text-green-600" },
   ];
 
   return (

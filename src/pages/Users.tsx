@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import type User from "../types/user";
 import Modal from "../components/Modal";
 
@@ -213,6 +214,12 @@ export default function Users() {
                 <td className="p-3">{user.email}</td>
                 <td className="p-3">{user.role}</td>
                 <td className="p-3">
+                  <Link
+                    to={`/policies?userId=${user.id}`}
+                    className="text-green-600 hover:underline mr-3"
+                  >
+                    View Policies
+                  </Link>
                   <button
                     onClick={() => {
                       setEditingUser(user);
