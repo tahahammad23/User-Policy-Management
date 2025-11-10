@@ -169,7 +169,7 @@ export default function Users() {
   );
 
   return (
-    <main className="p-6 min-h-screen bg-gray-50">
+    <main className="p-6 min-h-screen bg-gray-50 fixed top-40 w-full">
       <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-gray-800 mb-4 sm:mb-0">Users</h1>
 
@@ -191,7 +191,7 @@ export default function Users() {
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto bg-white shadow-md rounded-lg">
+      <div className="overflow-x-auto bg-white shadow-md rounded-lg max-h-[600px] overflow-y-auto">
         <table className="w-full border-collapse">
           <thead className="bg-gray-100 text-gray-700">
             <tr>
