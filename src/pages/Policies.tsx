@@ -492,11 +492,10 @@ export default function Policies() {
   const query = useQuery();
   const userId = query.get("userId");
 
-  // 🧩 Handle Add/Edit form submission
+  // for Adding / Editing value in the form
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (editingPolicy) {
-      // Update existing policy
       setPolicies((prev) =>
         prev.map((p) =>
           p.id === editingPolicy.id ? { ...p, ...formData } : p
@@ -504,7 +503,6 @@ export default function Policies() {
       );
       setEditingPolicy(null);
     } else {
-      // Add new policy
       const newPolicy: Policy = {
         id: policies.length
           ? Math.max(...policies.map((p) => p.id)) + 1
@@ -517,12 +515,12 @@ export default function Policies() {
     setShowModal(false);
   };
 
-  // 🗑️ Delete a policy
+  //deleting policy 
   const handleDelete = (id: number) => {
     setPolicies((prev) => prev.filter((p) => p.id !== id));
   };
 
-  // 🔍 Apply status filter
+  //filter
   const filteredPolicies = policies.filter((policy) => {
     const statusMatch = filterStatus === "All" || policy.status === filterStatus;
     const userMatch = !userId || policy.userId === parseInt(userId);
@@ -531,14 +529,12 @@ export default function Policies() {
 
   return (
     <main className="p-6 min-h-screen bg-gray-50 fixed top-40 w-full">
-      {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-gray-800 mb-4 sm:mb-0">
           Policies
         </h1>
 
         <div className="flex gap-3">
-          {/* Status Filter */}
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
@@ -561,7 +557,7 @@ export default function Policies() {
         </div>
       </div>
 
-      {/* Table */}
+      {/* table heading row */}
       <div className="overflow-x-auto bg-white shadow-md rounded-lg max-h-[600px] overflow-y-auto">
         <table className="w-full border-collapse">
           <thead className="bg-gray-100 text-gray-700">
@@ -635,7 +631,6 @@ export default function Policies() {
         </table>
       </div>
 
-      {/* Add/Edit Modal */}
       <Modal
         show={showModal}
         onClose={() => {
@@ -723,7 +718,6 @@ export default function Policies() {
         </form>
       </Modal>
 
-      {/* Delete Modal */}
       <Modal
         show={showDeleteModal}
         onClose={() => {

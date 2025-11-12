@@ -135,17 +135,15 @@ export default function Users() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deletingUserId, setDeletingUserId] = useState<number | null>(null);
 
-  // Handle add/edit form submission
+  // adding & editing user
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (editingUser) {
-      // Update existing user
       setUsers((prev) =>
         prev.map((u) => (u.id === editingUser.id ? { ...u, ...formData } : u))
       );
       setEditingUser(null);
     } else {
-      // Add new user
       const newUser: User = {
         id: users.length + 1,
         ...formData,
@@ -156,12 +154,11 @@ export default function Users() {
     setShowModal(false);
   };
 
-  // Handle delete
+  // Deletion 
   const handleDelete = (id: number) => {
     setUsers((prev) => prev.filter((u) => u.id !== id));
   };
 
-  // Filter users
   const filteredUsers = users.filter(
     (u) =>
       u.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -191,7 +188,7 @@ export default function Users() {
         </div>
       </div>
 
-      {/* Table */}
+      {/* table values*/}
       <div className="overflow-x-auto bg-white shadow-md rounded-lg max-h-[600px] overflow-y-auto">
         <table className="w-full border-collapse">
           <thead className="bg-gray-100 text-gray-700">
@@ -257,7 +254,6 @@ export default function Users() {
         </table>
       </div>
 
-      {/* Add/Edit Modal */}
       <Modal
         show={showModal}
         onClose={() => {
@@ -325,7 +321,6 @@ export default function Users() {
         </form>
       </Modal>
 
-      {/* Delete Modal */}
       <Modal
         show={showDeleteModal}
         onClose={() => {
