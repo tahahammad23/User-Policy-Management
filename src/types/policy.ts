@@ -1,6 +1,6 @@
 export default interface Policy {
   id: number;
-  userId: number;
+  userId: string;
   userName: string;
   plan: string;
   status: string;

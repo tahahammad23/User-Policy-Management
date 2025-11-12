@@ -12,7 +12,7 @@ export default function Policies() {
   const [policies, setPolicies] = useState<Policy[]>([
     {
       id: 101,
-      userId: 1,
+      userId: "1",
       userName: "John Doe",
       plan: "Plan A",
       status: "Active",
@@ -20,7 +20,7 @@ export default function Policies() {
     },
     {
       id: 102,
-      userId: 2,
+      userId: "2",
       userName: "Jane Smith",
       plan: "Plan B",
       status: "Expired",
@@ -28,7 +28,7 @@ export default function Policies() {
     },
     {
       id: 103,
-      userId: 3,
+      userId: "3",
       userName: "Daniel Lewis",
       plan: "Plan A",
       status: "Active",
@@ -36,7 +36,7 @@ export default function Policies() {
     },
     {
       id: 104,
-      userId: 4,
+      userId: "4",
       userName: "Nancy Clark",
       plan: "Plan E",
       status: "Active",
@@ -44,7 +44,7 @@ export default function Policies() {
     },
     {
       id: 105,
-      userId: 5,
+      userId: "5",
       userName: "Stephanie Reed",
       plan: "Plan A",
       status: "Pending",
@@ -52,7 +52,7 @@ export default function Policies() {
     },
     {
       id: 106,
-      userId: 6,
+      userId: "6",
       userName: "Cynthia Richardson",
       plan: "Plan C",
       status: "Active",
@@ -60,7 +60,7 @@ export default function Policies() {
     },
     {
       id: 107,
-      userId: 7,
+      userId: "7",
       userName: "Laura Murphy",
       plan: "Plan E",
       status: "Pending",
@@ -68,7 +68,7 @@ export default function Policies() {
     },
     {
       id: 108,
-      userId: 8,
+      userId: "8",
       userName: "Daniel Lewis",
       plan: "Plan A",
       status: "Active",
@@ -76,7 +76,7 @@ export default function Policies() {
     },
     {
       id: 109,
-      userId: 9,
+      userId: "9",
       userName: "Ronald Cook",
       plan: "Plan C",
       status: "Active",
@@ -84,7 +84,7 @@ export default function Policies() {
     },
     {
       id: 110,
-      userId: 10,
+      userId: "10",
       userName: "Lisa Martin",
       plan: "Plan D",
       status: "Active",
@@ -92,7 +92,7 @@ export default function Policies() {
     },
     {
       id: 111,
-      userId: 11,
+      userId: "11",
       userName: "Timothy Bell",
       plan: "Plan C",
       status: "Expired",
@@ -100,7 +100,7 @@ export default function Policies() {
     },
     {
       id: 112,
-      userId: 12,
+      userId: "12",
       userName: "Stephanie Reed",
       plan: "Plan C",
       status: "Pending",
@@ -108,7 +108,7 @@ export default function Policies() {
     },
     {
       id: 113,
-      userId: 13,
+      userId: "13",
       userName: "Lisa Martin",
       plan: "Plan A",
       status: "Expired",
@@ -116,7 +116,7 @@ export default function Policies() {
     },
     {
       id: 114,
-      userId: 14,
+      userId: "14",
       userName: "George Stewart",
       plan: "Plan C",
       status: "Active",
@@ -124,7 +124,7 @@ export default function Policies() {
     },
     {
       id: 115,
-      userId: 15,
+      userId: "15",
       userName: "Donald Hill",
       plan: "Plan E",
       status: "Expired",
@@ -132,7 +132,7 @@ export default function Policies() {
     },
     {
       id: 116,
-      userId: 16,
+      userId: "16",
       userName: "Cynthia Richardson",
       plan: "Plan A",
       status: "Active",
@@ -140,7 +140,7 @@ export default function Policies() {
     },
     {
       id: 117,
-      userId: 17,
+      userId: "17",
       userName: "Daniel Lewis",
       plan: "Plan B",
       status: "Pending",
@@ -148,7 +148,7 @@ export default function Policies() {
     },
     {
       id: 118,
-      userId: 18,
+      userId: "18",
       userName: "Kevin Parker",
       plan: "Plan A",
       status: "Active",
@@ -156,7 +156,7 @@ export default function Policies() {
     },
     {
       id: 119,
-      userId: 19,
+      userId: "19",
       userName: "Timothy Bell",
       plan: "Plan B",
       status: "Pending",
@@ -164,7 +164,7 @@ export default function Policies() {
     },
     {
       id: 120,
-      userId: 20,
+      userId: "20",
       userName: "Kevin Parker",
       plan: "Plan E",
       status: "Active",
@@ -172,7 +172,7 @@ export default function Policies() {
     },
     {
       id: 121,
-      userId: 21,
+      userId: "21",
       userName: "Donna Mitchell",
       plan: "Plan A",
       status: "Expired",
@@ -180,7 +180,7 @@ export default function Policies() {
     },
     {
       id: 122,
-      userId: 22,
+      userId: "22",
       userName: "Stephanie Reed",
       plan: "Plan E",
       status: "Active",
@@ -188,7 +188,7 @@ export default function Policies() {
     },
     {
       id: 123,
-      userId: 23,
+      userId: "23",
       userName: "Deborah Morris",
       plan: "Plan E",
       status: "Expired",
@@ -196,7 +196,7 @@ export default function Policies() {
     },
     {
       id: 124,
-      userId: 24,
+      userId: "24",
       userName: "Mark Wright",
       plan: "Plan E",
       status: "Active",
@@ -204,7 +204,7 @@ export default function Policies() {
     },
     {
       id: 125,
-      userId: 25,
+      userId: "25",
       userName: "Donna Mitchell",
       plan: "Plan E",
       status: "Active",
@@ -212,7 +212,7 @@ export default function Policies() {
     },
     {
       id: 126,
-      userId: 26,
+      userId: "26",
       userName: "Amanda Evans",
       plan: "Plan A",
       status: "Pending",
@@ -220,7 +220,7 @@ export default function Policies() {
     },
     {
       id: 127,
-      userId: 27,
+      userId: "27",
       userName: "Margaret Allen",
       plan: "Plan A",
       status: "Active",
@@ -228,7 +228,7 @@ export default function Policies() {
     },
     {
       id: 128,
-      userId: 28,
+      userId: "28",
       userName: "Richard Jackson",
       plan: "Plan C",
       status: "Pending",
@@ -236,7 +236,7 @@ export default function Policies() {
     },
     {
       id: 129,
-      userId: 29,
+      userId: "29",
       userName: "Kathleen Howard",
       plan: "Plan D",
       status: "Active",
@@ -244,7 +244,7 @@ export default function Policies() {
     },
     {
       id: 130,
-      userId: 30,
+      userId: "30",
       userName: "David Williams",
       plan: "Plan D",
       status: "Expired",
@@ -252,7 +252,7 @@ export default function Policies() {
     },
     {
       id: 131,
-      userId: 31,
+      userId: "31",
       userName: "Kimberly Adams",
       plan: "Plan D",
       status: "Active",
@@ -260,7 +260,7 @@ export default function Policies() {
     },
     {
       id: 132,
-      userId: 32,
+      userId: "32",
       userName: "Deborah Morris",
       plan: "Plan E",
       status: "Active",
@@ -268,7 +268,7 @@ export default function Policies() {
     },
     {
       id: 133,
-      userId: 33,
+      userId: "33",
       userName: "Anthony Young",
       plan: "Plan D",
       status: "Active",
@@ -276,7 +276,7 @@ export default function Policies() {
     },
     {
       id: 134,
-      userId: 34,
+      userId: "34",
       userName: "Jason Bailey",
       plan: "Plan C",
       status: "Expired",
@@ -284,7 +284,7 @@ export default function Policies() {
     },
     {
       id: 135,
-      userId: 35,
+      userId: "35",
       userName: "Lisa Martin",
       plan: "Plan D",
       status: "Active",
@@ -292,7 +292,7 @@ export default function Policies() {
     },
     {
       id: 136,
-      userId: 36,
+      userId: "36",
       userName: "Kimberly Adams",
       plan: "Plan C",
       status: "Expired",
@@ -300,7 +300,7 @@ export default function Policies() {
     },
     {
       id: 137,
-      userId: 37,
+      userId: "37",
       userName: "Rebecca Morgan",
       plan: "Plan D",
       status: "Expired",
@@ -308,7 +308,7 @@ export default function Policies() {
     },
     {
       id: 138,
-      userId: 38,
+      userId: "38",
       userName: "Rebecca Morgan",
       plan: "Plan D",
       status: "Active",
@@ -316,7 +316,7 @@ export default function Policies() {
     },
     {
       id: 139,
-      userId: 39,
+      userId: "39",
       userName: "David Williams",
       plan: "Plan E",
       status: "Active",
@@ -324,7 +324,7 @@ export default function Policies() {
     },
     {
       id: 140,
-      userId: 40,
+      userId: "40",
       userName: "Ashley Lopez",
       plan: "Plan D",
       status: "Expired",
@@ -332,7 +332,7 @@ export default function Policies() {
     },
     {
       id: 141,
-      userId: 41,
+      userId: "41",
       userName: "Ashley Lopez",
       plan: "Plan D",
       status: "Pending",
@@ -340,7 +340,7 @@ export default function Policies() {
     },
     {
       id: 142,
-      userId: 42,
+      userId: "42",
       userName: "Steven Green",
       plan: "Plan B",
       status: "Active",
@@ -348,7 +348,7 @@ export default function Policies() {
     },
     {
       id: 143,
-      userId: 43,
+      userId: "43",
       userName: "Sharon Rivera",
       plan: "Plan B",
       status: "Expired",
@@ -356,7 +356,7 @@ export default function Policies() {
     },
     {
       id: 144,
-      userId: 44,
+      userId: "44",
       userName: "Michael Brown",
       plan: "Plan C",
       status: "Pending",
@@ -364,7 +364,7 @@ export default function Policies() {
     },
     {
       id: 145,
-      userId: 45,
+      userId: "45",
       userName: "Matthew Hall",
       plan: "Plan A",
       status: "Active",
@@ -372,7 +372,7 @@ export default function Policies() {
     },
     {
       id: 146,
-      userId: 46,
+      userId: "46",
       userName: "Ryan Cox",
       plan: "Plan C",
       status: "Pending",
@@ -380,7 +380,7 @@ export default function Policies() {
     },
     {
       id: 147,
-      userId: 47,
+      userId: "47",
       userName: "Cynthia Richardson",
       plan: "Plan D",
       status: "Active",
@@ -388,7 +388,7 @@ export default function Policies() {
     },
     {
       id: 148,
-      userId: 48,
+      userId: "48",
       userName: "Ronald Cook",
       plan: "Plan B",
       status: "Active",
@@ -396,7 +396,7 @@ export default function Policies() {
     },
     {
       id: 149,
-      userId: 49,
+      userId: "49",
       userName: "Daniel Lewis",
       plan: "Plan E",
       status: "Active",
@@ -404,7 +404,7 @@ export default function Policies() {
     },
     {
       id: 150,
-      userId: 50,
+      userId: "50",
       userName: "Timothy Bell",
       plan: "Plan B",
       status: "Pending",
@@ -412,7 +412,7 @@ export default function Policies() {
     },
     {
       id: 151,
-      userId: 51,
+      userId: "51",
       userName: "Robert Anderson",
       plan: "Plan B",
       status: "Active",
@@ -420,7 +420,7 @@ export default function Policies() {
     },
     {
       id: 152,
-      userId: 52,
+      userId: "52",
       userName: "Steven Green",
       plan: "Plan D",
       status: "Active",
@@ -428,7 +428,7 @@ export default function Policies() {
     },
     {
       id: 153,
-      userId: 53,
+      userId: "53",
       userName: "Thomas Lee",
       plan: "Plan B",
       status: "Active",
@@ -436,7 +436,7 @@ export default function Policies() {
     },
     {
       id: 154,
-      userId: 54,
+      userId: "54",
       userName: "Amy Torres",
       plan: "Plan A",
       status: "Expired",
@@ -444,7 +444,7 @@ export default function Policies() {
     },
     {
       id: 155,
-      userId: 55,
+      userId: "55",
       userName: "David Williams",
       plan: "Plan A",
       status: "Active",
@@ -452,7 +452,7 @@ export default function Policies() {
     },
     {
       id: 156,
-      userId: 56,
+      userId: "56",
       userName: "Mark Wright",
       plan: "Plan D",
       status: "Active",
@@ -460,7 +460,7 @@ export default function Policies() {
     },
     {
       id: 157,
-      userId: 57,
+      userId: "57",
       userName: "Amy Torres",
       plan: "Plan E",
       status: "Expired",
@@ -468,7 +468,7 @@ export default function Policies() {
     },
     {
       id: 158,
-      userId: 58,
+      userId: "58",
       userName: "William Taylor",
       plan: "Plan E",
       status: "Active",
@@ -481,7 +481,7 @@ export default function Policies() {
   const [showModal, setShowModal] = useState(false);
   const [editingPolicy, setEditingPolicy] = useState<Policy | null>(null);
   const [formData, setFormData] = useState({
-    userId: 0,
+    userId: "",
     userName: "",
     plan: "",
     status: "",
@@ -511,7 +511,7 @@ export default function Policies() {
       };
       setPolicies((prev) => [...prev, newPolicy]);
     }
-    setFormData({ userId: 0, userName: "", plan: "", status: "", effectiveDate: "" });
+    setFormData({ userId: "", userName: "", plan: "", status: "", effectiveDate: "" });
     setShowModal(false);
   };
 
@@ -523,7 +523,7 @@ export default function Policies() {
   //filter
   const filteredPolicies = policies.filter((policy) => {
     const statusMatch = filterStatus === "All" || policy.status === filterStatus;
-    const userMatch = !userId || policy.userId === parseInt(userId);
+    const userMatch = !userId || policy.userId === userId;
     return statusMatch && userMatch;
   });
 
@@ -596,7 +596,7 @@ export default function Policies() {
                     onClick={() => {
                       setEditingPolicy(policy);
                       setFormData({
-                        userId: policy.userId,
+                        userId: String(policy.userId),
                         userName: policy.userName,
                         plan: policy.plan,
                         status: policy.status,
@@ -637,7 +637,7 @@ export default function Policies() {
           setShowModal(false);
           setEditingPolicy(null);
           setFormData({
-            userId: 0,
+            userId: "",
             userName: "",
             plan: "",
             status: "",
@@ -655,6 +655,16 @@ export default function Policies() {
             value={formData.userName}
             onChange={(e) =>
               setFormData({ ...formData, userName: e.target.value })
+            }
+          />
+          <input
+            type="text"
+            placeholder="User ID"
+            required
+            className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+            value={formData.userId}
+            onChange={(e) =>
+              setFormData({ ...formData, userId: e.target.value })
             }
           />
           <input
@@ -697,7 +707,7 @@ export default function Policies() {
                 setShowModal(false);
                 setEditingPolicy(null);
                 setFormData({
-                  userId: 0,
+                  userId: "",
                   userName: "",
                   plan: "",
                   status: "",
