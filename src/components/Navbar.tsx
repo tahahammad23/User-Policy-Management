@@ -1,9 +1,11 @@
-import navbarStyles from '../styles/navbar.module.css';
+import  '../styles/navbar.module.css';
 function Navbar()
 {
   return (
     <nav>
-      <p> User & Policy Management </p>
+      <div>
+        <img src="logopro.png" alt="" />
+      </div>
       <ul>
         <li> <a href="/">
           Dashboard</a>
