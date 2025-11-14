@@ -1,5 +1,6 @@
-  import  type Policy from "../types/policy"; 
-  const policies : Policy[]=[
+import users from "./user";
+
+const rawPolicies = [
     {
       id: 101,
       userId: "1",
@@ -464,5 +465,12 @@
       status: "Active",
       effectiveDate: "2025-07-02",
     },
-  ]
-  export default policies;
+  ];
+
+// sync username from users array by userId so names always match
+const policies = rawPolicies.map((p) => ({
+  ...p,
+  userName: users.find((u) => String(u.id) === p.userId)?.name ?? p.userName,
+}));
+
+export default policies;
