@@ -8,6 +8,7 @@ import users from "./data/user";
 import policies from "./data/policy";
 
 function App() {
+  
   return (
     <Router>
       <Navbar />
