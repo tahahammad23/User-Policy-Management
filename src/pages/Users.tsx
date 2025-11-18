@@ -4,8 +4,9 @@ import type User from "../types/user";
 import Modal from "../components/Modal";
 
 
-export default function Users({usersData}: {usersData?: User[]}) {
-  const [users, setUsers] = useState<User[]>(usersData || []);
+export default function Users({allUsers , setAllUsers}: { allUsers: User[] ; setAllUsers: React.Dispatch<React.SetStateAction<User[]>>}) {
+
+  // const [allUsers, setAllUsers] = useState<User[]>(allUsers || []);
 
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -19,16 +20,16 @@ export default function Users({usersData}: {usersData?: User[]}) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (editingUser) {
-      setUsers((prev) =>
+      setAllUsers((prev) =>
         prev.map((u) => (u.id === editingUser.id ? { ...u, ...formData } : u))
       );
       setEditingUser(null);
     } else {
       const newUser: User = {
-        id: users.length + 1,
+        id: allUsers.length + 1,
         ...formData,
       };
-      setUsers((prev) => [...prev, newUser]);
+      setAllUsers((prev) => [...prev, newUser]);
     }
     setFormData({ name: "", email: "", role: "" });
     setShowModal(false);
@@ -36,10 +37,10 @@ export default function Users({usersData}: {usersData?: User[]}) {
 
   // Deletion 
   const handleDelete = (id: number) => {
-    setUsers((prev) => prev.filter((u) => u.id !== id));
+    setAllUsers((prev) => prev.filter((u) => u.id !== id));
   };
 
-  const filteredUsers = users.filter(
+  const filteredUsers = allUsers.filter(
     (u) =>
       u.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       u.email.toLowerCase().includes(searchTerm.toLowerCase()) ||

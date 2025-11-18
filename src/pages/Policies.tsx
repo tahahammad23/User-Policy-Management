@@ -9,8 +9,8 @@ function useQuery() {
   return useMemo(() => new URLSearchParams(search), [search]);
 }
 
-export default function Policies({policyData}: {policyData?: Policy[]}) {
-  const [policies, setPolicies] = useState<Policy[]>(policyData || []);
+export default function Policies({allPolicies , setPolicies}: { allPolicies: Policy[] ; setPolicies: React.Dispatch<React.SetStateAction<Policy[]>>}) {
+  // const [allPolicies, setPolicies] = useState<Policy[]>(policyData || []);
 
   const [filterStatus, setFilterStatus] = useState("All");
   const [showModal, setShowModal] = useState(false);
@@ -53,8 +53,8 @@ export default function Policies({policyData}: {policyData?: Policy[]}) {
       setEditingPolicy(null);
     } else {
       const newPolicy: Policy = {
-        id: policies.length
-          ? Math.max(...policies.map((p) => p.id)) + 1
+        id: allPolicies.length
+          ? Math.max(...allPolicies.map((p) => p.id)) + 1
           : 101,
         ...formData,
       };
@@ -70,7 +70,7 @@ export default function Policies({policyData}: {policyData?: Policy[]}) {
   };
 
   //filter
-  const filteredPolicies = policies.filter((policy) => {
+  const filteredPolicies = allPolicies.filter((policy) => {
     const statusMatch = filterStatus === "All" || policy.status === filterStatus;
     const userMatch = !userId || policy.userId === userId;
     return statusMatch && userMatch;

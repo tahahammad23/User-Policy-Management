@@ -1,10 +1,12 @@
 import { NavLink } from "react-router-dom";
 import Button from "../components/Buttons";
+import type User from "../types/user";
+import type Policy from "../types/policy";
 
-export default function Dashboard() {
+export default function Dashboard({allUsers, allPolicies}: {allUsers: User[]; allPolicies: Policy[]}) {
   const summary = [
-    { title: "Total Users", value: 120, color: "text-blue-600" },
-    { title: "Total Policies", value: 158, color: "text-green-600" },
+    { title: "Total Users", value: allUsers, color: "text-blue-600" },
+    { title: "Total Policies", value: allPolicies, color: "text-green-600" },
   ];
 
   return (
@@ -23,7 +25,7 @@ export default function Dashboard() {
               {item.title}
             </h2>
             <p className={`text-4xl font-bold mt-3 ${item.color}`}>
-              {item.value}
+              {item.value.length}
             </p>
           </div>
         ))}
