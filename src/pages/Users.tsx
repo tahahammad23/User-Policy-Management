@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import type User from "../types/user";
 import Modal from "../components/Modal";
+import { useAppContext } from "../context/AppContext";
 
-
-export default function Users({allUsers , setAllUsers}: { allUsers: User[] ; setAllUsers: React.Dispatch<React.SetStateAction<User[]>>}) {
-
-  // const [allUsers, setAllUsers] = useState<User[]>(allUsers || []);
-
+export default function Users() {
+  const { allUsers, setAllUsers } = useAppContext();
 
   const [searchTerm, setSearchTerm] = useState("");
   const [showModal, setShowModal] = useState(false);

@@ -2,15 +2,15 @@ import React, { useState, useMemo, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import type Policy from "../types/policy";
 import Modal from "../components/Modal";
-import users from "../data/user"; // Import users data
+import { useAppContext } from "../context/AppContext";
 
 function useQuery() {
   const { search } = useLocation();
   return useMemo(() => new URLSearchParams(search), [search]);
 }
 
-export default function Policies({allPolicies , setPolicies}: { allPolicies: Policy[] ; setPolicies: React.Dispatch<React.SetStateAction<Policy[]>>}) {
-  // const [allPolicies, setPolicies] = useState<Policy[]>(policyData || []);
+export default function Policies() {
+  const { allPolicies, setAllPolicies, allUsers } = useAppContext();
 
   const [filterStatus, setFilterStatus] = useState("All");
   const [showModal, setShowModal] = useState(false);
@@ -28,7 +28,7 @@ export default function Policies({allPolicies , setPolicies}: { allPolicies: Pol
   const userId = query.get("userId");
 
   // Find the current user if userId is in the URL
-  const currentUser = userId ? users.find(u => u.id === parseInt(userId)) : null;
+  const currentUser = userId ? allUsers.find(u => u.id === parseInt(userId)) : null;
 
   // Pre-fill form data when opening modal for a specific user
   useEffect(() => {
@@ -39,13 +39,13 @@ export default function Policies({allPolicies , setPolicies}: { allPolicies: Pol
         userName: currentUser.name,
       }));
     }
-  }, [showModal, editingPolicy, currentUser]);
+  }, [showModal, editingPolicy, currentUser, allUsers]);
 
   // for Adding / Editing value in the form
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (editingPolicy) {
-      setPolicies((prev) =>
+      setAllPolicies((prev) =>
         prev.map((p) =>
           p.id === editingPolicy.id ? { ...p, ...formData } : p
         )
@@ -58,7 +58,7 @@ export default function Policies({allPolicies , setPolicies}: { allPolicies: Pol
           : 101,
         ...formData,
       };
-      setPolicies((prev) => [...prev, newPolicy]);
+      setAllPolicies((prev) => [...prev, newPolicy]);
     }
     setFormData({ userId: "", userName: "", plan: "", status: "", effectiveDate: "" });
     setShowModal(false);
@@ -66,7 +66,7 @@ export default function Policies({allPolicies , setPolicies}: { allPolicies: Pol
 
   //deleting policy 
   const handleDelete = (id: number) => {
-    setPolicies((prev) => prev.filter((p) => p.id !== id));
+    setAllPolicies((prev) => prev.filter((p) => p.id !== id));
   };
 
   //filter
@@ -321,3 +321,4 @@ export default function Policies({allPolicies , setPolicies}: { allPolicies: Pol
     </main>
   );
 }
+
