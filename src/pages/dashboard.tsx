@@ -1,9 +1,11 @@
 import { NavLink } from "react-router-dom";
 import Button from "../components/Buttons";
-import type User from "../types/user";
-import type Policy from "../types/policy";
+import { useSelector } from "react-redux";
+import type { RootState } from "../redux/store";
 
-export default function Dashboard({allUsers, allPolicies}: {allUsers: User[]; allPolicies: Policy[]}) {
+export default function Dashboard() {
+  const allUsers = useSelector((state: RootState) => state.users.allUsers);
+  const allPolicies = useSelector((state: RootState) => state.policies.allPolicies);
   const summary = [
     { title: "Total Users", value: allUsers, color: "text-blue-600" },
     { title: "Total Policies", value: allPolicies, color: "text-green-600" },

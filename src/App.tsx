@@ -4,22 +4,19 @@ import Users from "./pages/Users";
 import Policies from "./pages/Policies";
 import Navbar from "./components/Navbar";
 import './styles/main.css';
-import users from "./data/user";
-import policies from "./data/policy";
-import { useState } from "react";
-import type User from "./types/user";
-import type Policy from "./types/policy";
+import { useSelector } from "react-redux";
+import type { RootState } from "./redux/store";
 
 function App() {
-  const [allUsers, setAllUsers] = useState<User[]>(users);
-  const [allPolicies, setAllPolicies] = useState<Policy[]>(policies);
+  const allUsers = useSelector((state: RootState) => state.users.allUsers);
+  const allPolicies = useSelector((state: RootState) => state.policies.allPolicies);
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Dashboard allUsers={allUsers} allPolicies={allPolicies}/>} />
-        <Route path="/users" element={<Users allUsers={allUsers} setAllUsers={setAllUsers}/>} />
-        <Route path="/policies" element={<Policies allPolicies={allPolicies} setPolicies={setAllPolicies}/>} />
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/users" element={<Users allUsers={allUsers} />} />
+        <Route path="/policies" element={<Policies allPolicies={allPolicies} />} />
       </Routes>
     </Router>
   );

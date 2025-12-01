@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import type User from "../types/user";
 import Modal from "../components/Modal";
+import { useDispatch } from "react-redux";
+import { addUser, updateUser, deleteUser } from "../redux/slices/userSlice";
 
 
-export default function Users({allUsers , setAllUsers}: { allUsers: User[] ; setAllUsers: React.Dispatch<React.SetStateAction<User[]>>}) {
+export default function Users({allUsers}: { allUsers: User[]}) {
 
-  // const [allUsers, setAllUsers] = useState<User[]>(allUsers || []);
+  const dispatch = useDispatch();
 
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -20,16 +22,14 @@ export default function Users({allUsers , setAllUsers}: { allUsers: User[] ; set
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (editingUser) {
-      setAllUsers((prev) =>
-        prev.map((u) => (u.id === editingUser.id ? { ...u, ...formData } : u))
-      );
+      dispatch(updateUser({ ...editingUser, ...formData }));
       setEditingUser(null);
     } else {
       const newUser: User = {
-        id: allUsers.length + 1,
+        id: Math.max(...allUsers.map(u => u.id)) + 1,
         ...formData,
       };
-      setAllUsers((prev) => [...prev, newUser]);
+      dispatch(addUser(newUser));
     }
     setFormData({ name: "", email: "", role: "" });
     setShowModal(false);
@@ -37,7 +37,7 @@ export default function Users({allUsers , setAllUsers}: { allUsers: User[] ; set
 
   // Deletion 
   const handleDelete = (id: number) => {
-    setAllUsers((prev) => prev.filter((u) => u.id !== id));
+    dispatch(deleteUser(id));
   };
 
   const filteredUsers = allUsers.filter(

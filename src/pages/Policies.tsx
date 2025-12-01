@@ -2,15 +2,18 @@ import React, { useState, useMemo, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import type Policy from "../types/policy";
 import Modal from "../components/Modal";
-import users from "../data/user"; // Import users data
+import { useDispatch, useSelector } from "react-redux";
+import { addPolicy, updatePolicy, deletePolicy } from "../redux/slices/policySlice";
+import type { RootState } from "../redux/store";
 
 function useQuery() {
   const { search } = useLocation();
   return useMemo(() => new URLSearchParams(search), [search]);
 }
 
-export default function Policies({allPolicies , setPolicies}: { allPolicies: Policy[] ; setPolicies: React.Dispatch<React.SetStateAction<Policy[]>>}) {
-  // const [allPolicies, setPolicies] = useState<Policy[]>(policyData || []);
+export default function Policies({allPolicies}: { allPolicies: Policy[]}) {
+  const dispatch = useDispatch();
+  const users = useSelector((state: RootState) => state.users.allUsers);
 
   const [filterStatus, setFilterStatus] = useState("All");
   const [showModal, setShowModal] = useState(false);
@@ -45,11 +48,7 @@ export default function Policies({allPolicies , setPolicies}: { allPolicies: Pol
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (editingPolicy) {
-      setPolicies((prev) =>
-        prev.map((p) =>
-          p.id === editingPolicy.id ? { ...p, ...formData } : p
-        )
-      );
+      dispatch(updatePolicy({ ...editingPolicy, ...formData }));
       setEditingPolicy(null);
     } else {
       const newPolicy: Policy = {
@@ -58,7 +57,7 @@ export default function Policies({allPolicies , setPolicies}: { allPolicies: Pol
           : 101,
         ...formData,
       };
-      setPolicies((prev) => [...prev, newPolicy]);
+      dispatch(addPolicy(newPolicy));
     }
     setFormData({ userId: "", userName: "", plan: "", status: "", effectiveDate: "" });
     setShowModal(false);
@@ -66,7 +65,7 @@ export default function Policies({allPolicies , setPolicies}: { allPolicies: Pol
 
   //deleting policy 
   const handleDelete = (id: number) => {
-    setPolicies((prev) => prev.filter((p) => p.id !== id));
+    dispatch(deletePolicy(id));
   };
 
   //filter
