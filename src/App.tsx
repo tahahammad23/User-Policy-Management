@@ -13,14 +13,17 @@ import type Policy from "./types/policy";
 function App() {
   const [allUsers, setAllUsers] = useState<User[]>(users);
   const [allPolicies, setAllPolicies] = useState<Policy[]>(policies);
+
   return (
     <Router>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Dashboard allUsers={allUsers} allPolicies={allPolicies}/>} />
-        <Route path="/users" element={<Users allUsers={allUsers} setAllUsers={setAllUsers}/>} />
-        <Route path="/policies" element={<Policies allPolicies={allPolicies} setPolicies={setAllPolicies}/>} />
-      </Routes>
+      <div style={{ paddingTop: '80px' }}>
+        <Routes>
+          <Route path="/" element={<Dashboard allUsers={allUsers} allPolicies={allPolicies} />} />
+          <Route path="/users" element={<Users allUsers={allUsers} setAllUsers={setAllUsers} />} />
+          <Route path="/policies" element={<Policies allPolicies={allPolicies} setPolicies={setAllPolicies} allUsers={allUsers} />} />
+        </Routes>
+      </div>
     </Router>
   );
 }

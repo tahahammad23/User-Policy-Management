@@ -1,22 +1,25 @@
-import { Link, NavLink } from 'react-router-dom';
-import  '../styles/navbar.module.css';
-function Navbar()
-{
+import { NavLink } from 'react-router-dom';
+import navbarStyles from '../styles/navbar.module.css';
+
+function Navbar() {
   return (
-    <nav>
+    <nav className={navbarStyles.nav}>
       <div>
-        <img src="logopro.png" alt="" />
+        <img src="logopro.png" alt="Logo" className={navbarStyles.logo} />
       </div>
       <ul>
-        <li> <NavLink to="/">
-          Dashboard</NavLink>
-          </li>
-        <li><NavLink to="/users">
-          Users</NavLink></li>
-        <li><NavLink to="/policies">
-          Policies</NavLink></li> 
+        <li>
+          <NavLink to="/">Dashboard</NavLink>
+        </li>
+        <li>
+          <NavLink to="/users">Users</NavLink>
+        </li>
+        <li>
+          <NavLink to="/policies">Policies</NavLink>
+        </li>
       </ul>
     </nav>
-    )
-  }
+  );
+}
+
 export default Navbar;
